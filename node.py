@@ -1,7 +1,7 @@
 """Classes for representing nodes"""
 
 
-class HuffmanNode:
+class Node:
     """ A node in a Huffman tree.
     Symbols occur only at leaves.
     Each node has a number attribute that can be used for node-numbering.
@@ -9,18 +9,18 @@ class HuffmanNode:
     Attributes:
     ===========
     @param int symbol: symbol located in this node, if any
-    @param HuffmanNode left: left subtree
-    @param HuffmanNode right: right subtree
+    @param Node left: left subtree
+    @param Node right: right subtree
     @param int number: node number
     """
 
     def __init__(self, symbol=None, left=None, right=None):
         """ Create a new HuffmanNode with the given parameters.
 
-        @param HuffmanNode self: this HuffmanNode
+        @param Node self: this HuffmanNode
         @param int|Node symbol: symbol to be stored in this node, if any
-        @param HuffmanNode|Node left: a tree rooted at 'left', if any
-        @param HuffmanNode|Node right: a tree rooted at 'right', if any
+        @param Node|Node left: a tree rooted at 'left', if any
+        @param Node|Node right: a tree rooted at 'right', if any
         @rtype: NoneType
         """
         self.symbol = symbol
@@ -34,11 +34,11 @@ class HuffmanNode:
         @param HuffmanNode|Any other: a tree rooted at the HuffmanNode 'other'
         @rtype: bool
 
-        >>> a = HuffmanNode(4)
-        >>> b = HuffmanNode(4)
+        >>> a = Node(4)
+        >>> b = Node(4)
         >>> a == b
         True
-        >>> b = HuffmanNode(5)
+        >>> b = Node(5)
         >>> a == b
         False
         """
@@ -48,8 +48,8 @@ class HuffmanNode:
     def __lt__(self, other):
         """ Return True iff self is less than other.
 
-        @param HuffmanNode self: this HuffmanNode tree
-        @param HuffmanNode|Any other: a tree rooted at the HuffmanNode 'other'
+        @param Node self: this HuffmanNode tree
+        @param Node|Any other: a tree rooted at the HuffmanNode 'other'
         @rtype: bool
         """
         return False  # arbitrarily say that one node is never less than another
@@ -57,10 +57,10 @@ class HuffmanNode:
     def __repr__(self):
         """ Return constructor-style string representation.
 
-        @param HuffmanNode self: this HuffmanNode tree
+        @param Node self: this HuffmanNode tree
         @rtype: str
         """
-        return 'HuffmanNode({}, {}, {})'.format(self.symbol,
+        return 'Node({}, {}, {})'.format(self.symbol,
                                                 self.left, self.right)
 
     def is_leaf(self):
@@ -69,7 +69,7 @@ class HuffmanNode:
         @param HuffmanNode self: this HuffmanNode tree
         @rtype: bool
 
-        >>> t = HuffmanNode(None)
+        >>> t = Node(None)
         >>> t.is_leaf()
         True
         """
@@ -83,10 +83,10 @@ class ReadNode:
 
     Attributes:
     ===========
-    @param int l_type: 0/1 (if the corresponding HuffmanNode's left is a leaf)
-    @param int l_data: a symbol or the node number of a HuffmanNode's left
-    @param int r_type: 0/1 (if the corresponding HuffmanNode's right is a leaf)
-    @param int r_data: a symbol or the node number of a HuffmanNode's right
+    @param int l_type: 0/1 (if the corresponding Node's left is a leaf)
+    @param int l_data: a symbol or the node number of a Node's left
+    @param int r_type: 0/1 (if the corresponding Node's right is a leaf)
+    @param int r_data: a symbol or the node number of a Node's right
     """
 
     def __init__(self, l_type, l_data, r_type, r_data):

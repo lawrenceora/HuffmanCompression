@@ -10,7 +10,7 @@ from huffman import byte_to_bits, bits_to_byte, get_bit, make_freq_dict
 from huffman import huffman_tree, get_codes, number_nodes
 from huffman import generate_compressed, generate_uncompressed
 from huffman import avg_length, tree_to_bytes, num_nodes_to_bytes
-from nodes import HuffmanNode
+from node import Node
 from hypothesis import given, assume, settings
 from hypothesis.strategies import binary, integers, dictionaries, text
 
@@ -60,10 +60,10 @@ class TestCompressionCode(unittest.TestCase):
 
     @given(dictionaries(integers(0, 255), integers(1, 1000), dict, 2, 256, 256))
     def test_huffman_tree(self, d):
-        """huffman_tree returns a non-leaf HuffmanNode"""
+        """huffman_tree returns a non-leaf Node"""
 
         t = huffman_tree(d)
-        self.assertTrue(isinstance(t, HuffmanNode))
+        self.assertTrue(isinstance(t, Node))
         self.assertTrue(not t.is_leaf())
 
     @given(dictionaries(integers(0, 255), integers(1, 1000), dict, 2, 256, 256))
